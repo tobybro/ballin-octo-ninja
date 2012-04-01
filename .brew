@@ -4,17 +4,25 @@ brew update && brew upgrade
 # Install wget with IRI support
 brew install wget --enable-iri
 
+# I dont want this right now
 # Install RingoJS and Narwhal
 # Note that the order in which these are installed is important; see http://git.io/brew-narwhal-ringo.
-brew install ringojs
-brew install narwhal
+#brew install ringojs
+#brew install narwhal
 
 # Everything else
 brew install ack
 brew install git
+brew install git-utils
+brew install git-flow
 brew install lynx
-brew install node
 brew install rename
-brew install rhino
 brew install tree
 brew install webkit2png
+brew install gnupg
+brew install fuse4x
+brew install encfs
+brew install s3fs
+brew install ssh-copy-id
+brew install watch
+brew install bash-completion
