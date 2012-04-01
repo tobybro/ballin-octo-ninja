@@ -9,7 +9,7 @@ alias d="cd ~/Documents/Dropbox"
 alias p="cd ~/Projects"
 alias g="git"
 alias v="vim"
-alias m="mate ."
+alias m="mvim ."
 
 # List all files colorized in long format, including dot files
 alias la="ls -Gla"
