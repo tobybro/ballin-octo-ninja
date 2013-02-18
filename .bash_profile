@@ -26,3 +26,6 @@ export LANG="en_US"
 complete -W "NSGlobalDomain" defaults
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source $HOME/.rvm/scripts/rvm
+[[ -s "$HOME/.nvm/nvm.sh" ]]      && source $HOME/.nvm/nvm.sh
+
+export PATH=$PATH:/usr/sbin:/sbin
