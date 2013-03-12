@@ -286,50 +286,10 @@ au BufNewFIle,BufRead *.trigger setf sql
 
 let perl_extended_vars=1 " highlight advanced perl vars inside strings
 
-"highlight DiffChange ctermbg=124
-"highlight DiffAdd    ctermbg=17
-"highlight DiffText   ctermbg=235
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Folding
-"    Enable folding, but by default make it act like folding is off, because folding is annoying in anything but a few rare cases
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"set foldenable " Turn on folding
-"set foldmethod=indent " Make folding indent sensitive
-"set foldlevel=100 " Don't autofold anything (but I can still fold manually)
-"set foldopen-=search " don't open folds when you search into them
-"set foldopen-=undo " don't open folds when you undo stuff
+colorscheme paintbox 
 
-
-" Open folds on:
-"   - Horizontal movement upon the fold
-"   - Movement to a mark
-"   - Searches
-"   - Movement to a tag
-"   - Undo (or redo)
-"set foldopen=hor,mark,search,tag,undo 
-"set foldcolumn=6
-
-"set foldmethod=syntax " Make folding syntax sensitive
-"let perl_fold_blocks=1
-"let perl_fold=1
-"let javaScript_fold=1
-" get easier to use and more user friendly vim defaults
-
-"if has("terminfo")`
-"  let &t_Co=256
-"  let &t_AB="\<Esc>[%?%p1%{8}%<%t%p1%{40}%+%e%p1%{92}%+%;%dm"
-"  let &t_AF="\<Esc>[%?%p1%{8}%<%t%p1%{30}%+%e%p1%{82}%+%;%dm"
-"else
-"  let &t_Co=256
-"  let &t_Sf="\<Esc>[3%dm"
-"  let &t_Sb="\<Esc>[4%dm"
-"endif
-
-"set background=dark
-colorscheme herald 
-
-"if &diff
-"  colorscheme solarized
-"  set background=dark
-"endif
+if &diff
+  colorscheme herald
+  set background=dark
+endif
 " /etc/vimrc ends here
