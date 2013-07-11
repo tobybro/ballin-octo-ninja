@@ -68,3 +68,5 @@ function xml { xmllint --format "$1" | vim -; }
 # tail and highlight
 function t() {  tail -f -n5000 "$1" | perl -pe "s/$2/\e[1;37;41m$&\e[0m/g"; }
 
+# tail and highlight two
+function t2() {  tail -f "$1" -f "$2" | perl -pe "s/$3/\e[1;37;41m$&\e[0m/g"; }

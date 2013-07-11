@@ -36,6 +36,7 @@ syntax on
 " Show “invisible” characters¬
 " set lcs=trail:·,eol:¬,nbsp:_
 " set list
+
 " automatically indent lines (default)
 set smartindent
 " set autoindent
@@ -264,31 +265,41 @@ endif " has("autocmd")
 " Changed default required by SuSE security team
 set modelines=0
 
+
+
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Perl
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " want .pcf files to be treated as perl
-au BufNewFile,BufRead *.pcf   setf perl
-au BufNewFile,BufRead *.pcf.*   setf perl
-au BufNewFile,BufRead *.mcf   setf perl
-au BufNewFile,BufRead *.pm.*   setf perl
-au BufNewFile,BufRead *.pl.*   setf perl
-au BufNewFile,BufRead *.cgi.*   setf perl
-au BufNewFile,BufRead *.t*   setf perl
-au BufNewFile,BufRead *.js.*   setf javascript
-au BufNewFile,BufRead *.html.*   setf html
-au BufNewFile,BufRead *.xml.*   setf xml
-au BufNewFIle,BufRead *.t.* setf perl
-au BufNewFIle,BufRead *.cfg   setf perl
-au BufNewFIle,BufRead *.table setf sql
-au BufNewFIle,BufRead *.trigger setf sql
+autocmd BufNewFile,BufRead *.pcf   setf perl
+autocmd BufNewFile,BufRead *.pcf.*   setf perl
+autocmd BufNewFile,BufRead *.mcf   setf perl
+autocmd BufNewFile,BufRead *.pm.*   setf perl 
+autocmd BufNewFile,BufRead *.pl.*   setf perl
+autocmd BufNewFile,BufRead *.cgi.*   setf perl
+autocmd BufNewFile,BufRead *.t*   setf perl
+autocmd BufNewFile,BufRead *.js.*   setf javascript
+autocmd BufNewFile,BufRead *.html.*   setf html
+autocmd BufNewFile,BufRead *.xml.*   setf xml
+autocmd BufNewFIle,BufRead *.t.* setf perl
+autocmd BufNewFIle,BufRead *.cfg   setf perl
+autocmd BufNewFIle,BufRead *.cgi   setf perl
+autocmd BufNewFIle,BufRead *.table setf sql
+autocmd BufNewFIle,BufRead *.trigger setf sql
 
 
 let perl_extended_vars=1 " highlight advanced perl vars inside strings
 
 inoremap <S-Tab> <C-V><Tab>
 
-colorscheme paintbox 
+"colorscheme herald 
+"colorscheme paintbox 
+set background=dark
+let g:solarized_termcolors=256
+colorscheme solarized
+
+
 
 if &diff
   colorscheme herald
