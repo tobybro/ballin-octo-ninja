@@ -70,3 +70,14 @@ function t() {  tail -f -n5000 "$1" | perl -pe "s/$2/\e[1;37;41m$&\e[0m/g"; }
 
 # tail and highlight two
 function t2() {  tail -f "$1" -f "$2" | perl -pe "s/$3/\e[1;37;41m$&\e[0m/g"; }
+
+#cd - through your history instead of back and forth
+cd_func() {
+  if [ -z "$*" ]; then
+    pushd ~ > /dev/null
+  elif [ $1 == '-' ]; then
+    popd > /dev/null
+  else
+    pushd "$*" > /dev/null
+  fi
+}
