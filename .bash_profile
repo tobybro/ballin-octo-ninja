@@ -29,3 +29,5 @@ complete -W "NSGlobalDomain" defaults
 [[ -s "$HOME/.nvm/nvm.sh" ]]      && source $HOME/.nvm/nvm.sh
 
 export PATH=$PATH:/usr/sbin:/sbin
+
+eval `dircolors ~/.dir_colors`
