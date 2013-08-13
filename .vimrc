@@ -301,8 +301,8 @@ colorscheme solarized
 
 
 
-if &diff
-  colorscheme herald
-  set background=dark
-endif
+"if &diff
+"  colorscheme herald
+"  set background=dark
+"endif
 " /etc/vimrc ends here
