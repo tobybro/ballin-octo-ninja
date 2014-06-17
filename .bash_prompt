@@ -9,11 +9,16 @@ fi
 if tput setaf 1 &> /dev/null; then
         tput sgr0
         if [[ $(tput colors) -ge 256 ]] 2>/dev/null; then
-                MAGENTA=$(tput setaf 9)
-                ORANGE=$(tput setaf 172)
-                GREEN=$(tput setaf 190)
-                PURPLE=$(tput setaf 141)
-                WHITE=$(tput setaf 256)
+                MAGENTA=$(tput setaf 37)
+                ORANGE=$(tput setaf 37)
+                GREEN=$(tput setaf 76)
+                PURPLE=$(tput setaf 166)
+                WHITE=$(tput setaf 37)
+                #MAGENTA=$(tput setaf 9)
+                #ORANGE=$(tput setaf 172)
+                #GREEN=$(tput setaf 190)
+                #PURPLE=$(tput setaf 141)
+                #WHITE=$(tput setaf 256)
         else
                 MAGENTA=$(tput setaf 5)
                 ORANGE=$(tput setaf 4)
@@ -44,5 +49,5 @@ function parse_git_branch() {
 function parse_svn() {
   svn info 2> /dev/null | grep '^URL:' | sed -ne 's/^URL: http:\/\/svnhost\/svn\///p'
 }
-
-PS1="\[${BOLD}${MAGENTA}\]\u \[$WHITE\]at \[$ORANGE\]\h \[$WHITE\]in \[$GREEN\]\w\[$WHITE\]\$([[ -n \$(git branch 2> /dev/null) ]] && echo \" on \")\[$PURPLE\]\$(parse_git_branch)\[$WHITE\]\$([[ -n \$(svn info 2> /dev/null) ]] && echo \" on \")\[$PURPLE\]\$(parse_svn)\[$WHITE\]\n\$ \[$RESET\]"
+PS1="\[${BOLD}${MAGENTA}\]\u\[$WHITE\]@\[$ORANGE\]\h\[$WHITE\]: \[$GREEN\]\w\[$WHITE\]\$([[ -n \$(git branch 2> /dev/null) ]] && echo \"  \")\[$PURPLE\]\$(parse_git_branch)\[$WHITE\]\$([[ -n \$(svn info 2> /dev/null) ]] && echo \" on \")\[$PURPLE\]\$(parse_svn)\[$WHITE\]\n\$ \[$RESET\]"
+#PS1="\[${BOLD}${MAGENTA}\]\u \[$WHITE\]at \[$ORANGE\]\h \[$WHITE\]in \[$GREEN\]\w\[$WHITE\]\$([[ -n \$(git branch 2> /dev/null) ]] && echo \" on \")\[$PURPLE\]\$(parse_git_branch)\[$WHITE\]\$([[ -n \$(svn info 2> /dev/null) ]] && echo \" on \")\[$PURPLE\]\$(parse_svn)\[$WHITE\]\n\$ \[$RESET\]"
