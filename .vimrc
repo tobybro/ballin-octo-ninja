@@ -73,6 +73,50 @@ set shiftwidth=2
 set softtabstop=2
 set expandtab
 
+" set highlighting on search
+set hls
+
+" fix backspace
+" set bs=indent,eol,start
+set backspace=2
+
+
+execute pathogen#infect()
+" enable syntastic for perl by default
+"let g:syntastic_check_on_open=1
+"let g:syntastic_enable_perl_checker = 1
+"let g:syntastic_enable_signs=1
+"let g:syntastic_perl_interpreter = $HOME.'/local/bin/unified-app-0.1/perl/bin/perl'
+"let g:syntastic_perl_perl_exec = '/home/boltonk/dev/utils/mbxperl'
+"let g:syntastic_perl_lib_path = [ $HOME.'/dev/emlogic/propval/core_mbx',
+"  \                               $HOME.'/dev/emlogic/propval/vms/lib',
+"  \                               $HOME.'/dev/vms_fnma/lib',
+"  \                               $HOME.'/dev/vms_emlogic/lib',
+"  \                               $HOME.'/dev/emlogic/propval/cgi-bin/common' ]
+
+
+" lightline
+let g:lightline = {
+      \ 'colorscheme': 'solarized',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'fugitive', 'readonly', 'filename', 'modified' ] ]
+      \ },
+      \ 'component': {
+      \   'readonly': '%{&filetype=="help"?"":&readonly?"⭤":""}',
+      \   'modified': '%{&filetype=="help"?"":&modified?"+":&modifiable?"":"-"}',
+      \   'fugitive': '%{exists("*fugitive#head")?fugitive#head():""}'
+      \ },
+      \ 'component_visible_condition': {
+      \   'readonly': '(&filetype!="help"&& &readonly)',
+      \   'modified': '(&filetype!="help"&&(&modified||!&modifiable))',
+      \   'fugitive': '(exists("*fugitive#head") && ""!=fugitive#head())'
+      \ },
+      \ 'separator': { 'left': '', 'right': '' },
+      \ 'subseparator': { 'left': '|', 'right': '|' }
+      \ }
+set laststatus=2
+
 " set background to dark for syntax-higlighting purposes
 " set background=dark
 
@@ -102,7 +146,6 @@ if myterm == "xterm" || myterm == "kvt" || myterm == "gnome"
     map! <ESC>Om  -
     map! <ESC>Ok  +
     map! <ESC>Ol  ,
-    map! <ESC>OM  
     map! <ESC>Ow  7
     map! <ESC>Ox  8
     map! <ESC>Oy  9
@@ -120,7 +163,6 @@ if myterm == "xterm" || myterm == "kvt" || myterm == "gnome"
     map <ESC>Om  -
     map <ESC>Ok  +
     map <ESC>Ol  ,
-    map <ESC>OM  
     map <ESC>Ow  7
     map <ESC>Ox  8
     map <ESC>Oy  9
