@@ -307,7 +307,12 @@ endif " has("autocmd")
 " Changed default required by SuSE security team
 set modelines=0
 
+" Set up puppet manifest and spec options
+au BufRead,BufNewFile *.pp set filetype=puppet
+au BufRead,BufNewFile *_spec.rb nmap <F8> :!rspec --color %<CR>
 
+" Enable indentation matching for =>'s
+filetype plugin indent on
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
