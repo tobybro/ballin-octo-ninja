@@ -1,8 +1,3 @@
-" /etc/vimrc (configuration file for vim only)
-" author: Klaus Franken     <kfr@suse.de>
-" author: Werner Fink       <werner@suse.de> 
-" author: Florian La Roche  <florian@suse.de> 
-" version: 00/01/20
 " commented lines start with `"'
 set t_Co=256
 " set incremental search
@@ -38,7 +33,7 @@ syntax on
 " set list
 
 " automatically indent lines (default)
-set smartindent
+" set smartindent
 " set autoindent
 
 " select case-insenitive search (not default)
@@ -63,7 +58,7 @@ set showmode
 set esckeys
 
 " get easier to use and more user friendly vim defaults
-" CAUTION: This option breaks some vi compatibility. 
+" CAUTION: This option breaks some vi compatibility.
 "          Switch it off if you prefer real vi compatibility
 set nocompatible
 
@@ -81,44 +76,8 @@ set hls
 set backspace=2
 
 
-execute pathogen#infect()
-" enable syntastic for perl by default
-"let g:syntastic_check_on_open=1
-"let g:syntastic_enable_perl_checker = 1
-"let g:syntastic_enable_signs=1
-"let g:syntastic_perl_interpreter = $HOME.'/local/bin/unified-app-0.1/perl/bin/perl'
-"let g:syntastic_perl_perl_exec = '/home/boltonk/dev/utils/mbxperl'
-"let g:syntastic_perl_lib_path = [ $HOME.'/dev/emlogic/propval/core_mbx',
-"  \                               $HOME.'/dev/emlogic/propval/vms/lib',
-"  \                               $HOME.'/dev/vms_fnma/lib',
-"  \                               $HOME.'/dev/vms_emlogic/lib',
-"  \                               $HOME.'/dev/emlogic/propval/cgi-bin/common' ]
 
-
-" lightline
-let g:lightline = {
-      \ 'colorscheme': 'solarized',
-      \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'fugitive', 'readonly', 'filename', 'modified' ] ]
-      \ },
-      \ 'component': {
-      \   'readonly': '%{&filetype=="help"?"":&readonly?"⭤":""}',
-      \   'modified': '%{&filetype=="help"?"":&modified?"+":&modifiable?"":"-"}',
-      \   'fugitive': '%{exists("*fugitive#head")?fugitive#head():""}'
-      \ },
-      \ 'component_visible_condition': {
-      \   'readonly': '(&filetype!="help"&& &readonly)',
-      \   'modified': '(&filetype!="help"&&(&modified||!&modifiable))',
-      \   'fugitive': '(exists("*fugitive#head") && ""!=fugitive#head())'
-      \ },
-      \ 'separator': { 'left': '', 'right': '' },
-      \ 'subseparator': { 'left': '|', 'right': '|' }
-      \ }
 set laststatus=2
-
-" set background to dark for syntax-higlighting purposes
-" set background=dark
 
 " Complete longest common string, then each full match
 " enable this for bash compatible behaviour
@@ -213,12 +172,12 @@ if myterm == "xterm" || myterm == "kvt" || myterm == "gnome"
     " KP_5 (NumLock off)
     map <ESC>[E  i
     " PageUp/PageDown
-    map <ESC>[5~ 
-    map <ESC>[6~ 
-    map <ESC>[5;2~ 
-    map <ESC>[6;2~ 
-    map <ESC>[5;5~ 
-    map <ESC>[6;5~ 
+    map <ESC>[5~
+    map <ESC>[6~
+    map <ESC>[5;2~
+    map <ESC>[6;2~
+    map <ESC>[5;5~
+    map <ESC>[6;5~
 endif
 
 " xterm/kvt but with activated keyboard transmit mode.
@@ -292,64 +251,210 @@ endif
 map! <Esc>[3~ <Delete>
 map  <ESC>[3~    x
 
-" Only do this part when compiled with support for autocommands. 
-if has("autocmd") 
-  " When editing a file, always jump to the last known cursor position. 
-  " Don't do it when the position is invalid or when inside an event handler 
-  " (happens when dropping a file on gvim). 
-  autocmd BufReadPost * 
-    \ if line("'\"") > 0 && line("'\"") <= line("$") | 
-    \   exe "normal g`\"" | 
-    \ endif 
- 
+" Only do this part when compiled with support for autocommands.
+if has("autocmd")
+  " When editing a file, always jump to the last known cursor position.
+  " Don't do it when the position is invalid or when inside an event handler
+  " (happens when dropping a file on gvim).
+  autocmd BufReadPost *
+    \ if line("'\"") > 0 && line("'\"") <= line("$") |
+    \   exe "normal g`\"" |
+    \ endif
+
 endif " has("autocmd")
-
-" Changed default required by SuSE security team
-set modelines=0
-
-" Set up puppet manifest and spec options
-au BufRead,BufNewFile *.pp set filetype=puppet
-au BufRead,BufNewFile *_spec.rb nmap <F8> :!rspec --color %<CR>
-
-" Enable indentation matching for =>'s
-filetype plugin indent on
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Perl
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " want .pcf files to be treated as perl
-autocmd BufNewFile,BufRead *.pcf   setf perl
-autocmd BufNewFile,BufRead *.pcf.*   setf perl
-autocmd BufNewFile,BufRead *.mcf   setf perl
-autocmd BufNewFile,BufRead *.pm.*   setf perl 
-autocmd BufNewFile,BufRead *.pl.*   setf perl
-autocmd BufNewFile,BufRead *.cgi.*   setf perl
-autocmd BufNewFile,BufRead *.t*   setf perl
-autocmd BufNewFile,BufRead *.js.*   setf javascript
+autocmd BufNewFile,BufRead *.pcf      setf perl
+autocmd BufNewFile,BufRead *.pcf.*    setf perl
+autocmd BufNewFile,BufRead *.mcf      setf perl
+autocmd BufNewFile,BufRead *.pm.*     setf perl
+autocmd BufNewFile,BufRead *.pl.*     setf perl
+autocmd BufNewFile,BufRead *.cgi.*    setf perl
+autocmd BufNewFile,BufRead *.t*       setf perl
+autocmd BufNewFile,BufRead *.js.*     setf javascript
 autocmd BufNewFile,BufRead *.html.*   setf html
-autocmd BufNewFile,BufRead *.xml.*   setf xml
-autocmd BufNewFIle,BufRead *.t.* setf perl
-autocmd BufNewFIle,BufRead *.cfg   setf perl
-autocmd BufNewFIle,BufRead *.cgi   setf perl
-autocmd BufNewFIle,BufRead *.table setf sql
-autocmd BufNewFIle,BufRead *.trigger setf sql
+autocmd BufNewFile,BufRead *.xml.*    setf xml
+autocmd BufNewFIle,BufRead *.t.*      setf perl
+autocmd BufNewFIle,BufRead *.cfg      setf perl
+autocmd BufNewFIle,BufRead *.cgi      setf perl
+autocmd BufNewFIle,BufRead *.table    setf sql
+autocmd BufNewFIle,BufRead *.trigger  setf sql
+autocmd Filetype gitcommit setlocal spell
 
 
 let perl_extended_vars=1 " highlight advanced perl vars inside strings
 
 inoremap <S-Tab> <C-V><Tab>
 
-"colorscheme herald 
-"colorscheme paintbox 
+"colorscheme herald
+"colorscheme paintbox
 set background=dark
-"let g:solarized_termcolors=256
 colorscheme solarized
 
+execute pathogen#infect()
 
+
+"configure sytastic
+  let perl_libs = []
+  let g:syntastic_enable_balloons=1
+  let g:syntastic_enable_highlighting=1
+  let g:syntastic_enable_perl_checker = 1
+  let g:syntastic_perl_checkers=['perl']
+  if $PERLBREW_PERL != ''
+    let g:syntastic_perl_interpreter = $PERLBREW_ROOT.'/perls/'.$PERLBREW_PERL.'/bin/perl'
+    if $PERLBREW_LIB != ''
+      "let perl_libs = [ $PERLBREW_HOME.'/libs/'.$PERLBREW_PERL.'@'.$PERLBREW_LIB, ]
+      let perl_libs = [ $PERL_LOCAL_LIB_ROOT, ]
+    endif
+  else
+    let g:syntastic_perl_interpreter = $HOME.'/dev/utils/mbxperl'
+  endif
+  let additional_perl_libs = [
+    \ $HOME.'/dev/emlogic/propval/core_mbx',
+    \ $HOME.'/dev/emlogic/propval/vms/lib',
+    \ $HOME.'/dev/emlogic/propval/cgi-bin/common',
+    \ $HOME.'/dev/emlogic/propval/MindBrixTran',
+    \ $HOME.'/dev/utils/mbxlib',
+    \ $HOME.'/dev/vms_emlogic/lib', ]
+  let g:syntastic_perl_lib_path = extend( perl_libs, additional_perl_libs )
+  let g:syntastic_mode_map = { 'mode': 'active',
+         \ 'active_filetypes': ['php', 'ruby', 'perl'], }
+
+" lightline
+let g:lightline = {
+      \ 'colorscheme': 'default',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ], ['ctrlpmark'] ],
+      \   'right': [ [ 'syntastic', 'lineinfo' ], ['percent'], [ 'fileformat', 'fileencoding', 'filetype' ] ]
+      \ },
+      \ 'component_function': {
+      \   'fugitive': 'MyFugitive',
+      \   'filename': 'MyFilename',
+      \   'fileformat': 'MyFileformat',
+      \   'filetype': 'MyFiletype',
+      \   'fileencoding': 'MyFileencoding',
+      \   'mode': 'MyMode',
+      \   'ctrlpmark': 'CtrlPMark',
+      \ },
+      \ 'component_expand': {
+      \   'syntastic': 'SyntasticStatuslineFlag',
+      \ },
+      \ 'component_type': {
+      \   'syntastic': 'error',
+      \ },
+      \ 'subseparator': { 'left': '|', 'right': '|' }
+      \ }
+
+function! MyModified()
+  return &ft =~ 'help' ? '' : &modified ? '+' : &modifiable ? '' : '-'
+endfunction
+
+function! MyReadonly()
+  return &ft !~? 'help' && &readonly ? 'RO' : ''
+endfunction
+
+function! MyFilename()
+  let fname = expand('%:t')
+  return fname == 'ControlP' ? g:lightline.ctrlp_item :
+        \ fname == '__Tagbar__' ? g:lightline.fname :
+        \ fname =~ '__Gundo\|NERD_tree' ? '' :
+        \ &ft == 'vimfiler' ? vimfiler#get_status_string() :
+        \ &ft == 'unite' ? unite#get_status_string() :
+        \ &ft == 'vimshell' ? vimshell#get_status_string() :
+        \ ('' != MyReadonly() ? MyReadonly() . ' ' : '') .
+        \ ('' != fname ? fname : '[No Name]') .
+        \ ('' != MyModified() ? ' ' . MyModified() : '')
+endfunction
+
+function! MyFugitive()
+  try
+    if expand('%:t') !~? 'Tagbar\|Gundo\|NERD' && &ft !~? 'vimfiler' && exists('*fugitive#head')
+      let mark = ''  " edit here for cool mark
+      let _ = fugitive#head()
+      return strlen(_) ? mark._ : ''
+    endif
+  catch
+  endtry
+  return ''
+endfunction
+
+function! MyFileformat()
+  return winwidth(0) > 70 ? &fileformat : ''
+endfunction
+
+function! MyFiletype()
+  return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype : 'no ft') : ''
+endfunction
+
+function! MyFileencoding()
+  return winwidth(0) > 70 ? (strlen(&fenc) ? &fenc : &enc) : ''
+endfunction
+
+function! MyMode()
+  let fname = expand('%:t')
+  return fname == '__Tagbar__' ? 'Tagbar' :
+        \ fname == 'ControlP' ? 'CtrlP' :
+        \ fname == '__Gundo__' ? 'Gundo' :
+        \ fname == '__Gundo_Preview__' ? 'Gundo Preview' :
+        \ fname =~ 'NERD_tree' ? 'NERDTree' :
+        \ &ft == 'unite' ? 'Unite' :
+        \ &ft == 'vimfiler' ? 'VimFiler' :
+        \ &ft == 'vimshell' ? 'VimShell' :
+        \ winwidth(0) > 60 ? lightline#mode() : ''
+endfunction
+
+function! CtrlPMark()
+  if expand('%:t') =~ 'ControlP'
+    call lightline#link('iR'[g:lightline.ctrlp_regex])
+    return lightline#concatenate([g:lightline.ctrlp_prev, g:lightline.ctrlp_item
+          \ , g:lightline.ctrlp_next], 0)
+  else
+    return ''
+  endif
+endfunction
+
+let g:ctrlp_status_func = {
+  \ 'main': 'CtrlPStatusFunc_1',
+  \ 'prog': 'CtrlPStatusFunc_2',
+  \ }
+
+function! CtrlPStatusFunc_1(focus, byfname, regex, prev, item, next, marked)
+  let g:lightline.ctrlp_regex = a:regex
+  let g:lightline.ctrlp_prev = a:prev
+  let g:lightline.ctrlp_item = a:item
+  let g:lightline.ctrlp_next = a:next
+  return lightline#statusline(0)
+endfunction
+
+function! CtrlPStatusFunc_2(str)
+  return lightline#statusline(0)
+endfunction
+
+let g:tagbar_status_func = 'TagbarStatusFunc'
+
+function! TagbarStatusFunc(current, sort, fname, ...) abort
+    let g:lightline.fname = a:fname
+  return lightline#statusline(0)
+endfunction
+
+augroup AutoSyntastic
+  autocmd!
+  autocmd BufWritePost *.pm,*.pl,*.t call s:syntastic()
+augroup END
+function! s:syntastic()
+  SyntasticCheck
+  call lightline#update()
+endfunction
+
+let g:unite_force_overwrite_statusline = 0
+let g:vimfiler_force_overwrite_statusline = 0
+let g:vimshell_force_overwrite_statusline = 0
 
 "if &diff
 "  colorscheme herald
 "  set background=dark
 "endif
-" /etc/vimrc ends here
