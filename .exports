@@ -11,4 +11,5 @@ export HISTCONTROL=ignoredups
 #export HISTIGNORE="ls:ls *:cd:cd -:pwd;exit:date:* --help"
 
 export PATH="$PATH:~/scripts"
-export PKG_CONFIG_PATH="/usr/lib64/pkgconfig/"
+export PATH="$PATH:~/bin"
+export PKG_CONFIG_PATH="/usr/lib64/pkgconfig/":

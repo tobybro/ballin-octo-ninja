@@ -36,3 +36,17 @@ alias cd='cd_func'
 
 #enable color for grep
 export GREP_OPTIONS='--color=auto'
+
+# compiled vim
+if [ -e ~/bin/vim ]; then
+  alias vim="~/bin/vim";
+fi
+
+# compiled git
+if [ -e ~/opt/bin/git ]; then
+  alias git="~/opt/bin/git";
+fi
+
+alias tig="~/bin/tig";
+
+
