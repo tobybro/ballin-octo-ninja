@@ -33,6 +33,7 @@ alias sgrep='find -type f -not -wholename \*svn\* -and -not -wholename \*git\*|s
 alias rm='rm -i'
 alias tmux='tmux -2'
 alias cd='cd_func'
+alias less='less -R'
 
 #enable color for grep
 export GREP_OPTIONS='--color=auto'
