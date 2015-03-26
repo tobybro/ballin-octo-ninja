@@ -1,6 +1,3 @@
-# @gf3’s Sexy Bash Prompt, inspired by “Extravagant Zsh Prompt”
-# Shamelessly copied from https://github.com/gf3/dotfiles
-# Screenshot: http://i.imgur.com/s0Blh.png
 
 if infocmp xterm-256color >/dev/null 2>&1; then
         export TERM=xterm-256color
@@ -10,7 +7,7 @@ if tput setaf 1 &> /dev/null; then
         tput sgr0
         if [[ $(tput colors) -ge 256 ]] 2>/dev/null; then
                 MAGENTA=$(tput setaf 37)
-                ORANGE=$(tput setaf 37)
+                ORANGE=$(tput setaf 9)
                 GREEN=$(tput setaf 76)
                 PURPLE=$(tput setaf 141)
                 WHITE=$(tput setaf 37)
@@ -43,11 +40,12 @@ function parse_git_dirty() {
 }
 
 function parse_git_branch() {
-  git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/\1$(parse_git_dirty)/"
+  #git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/\1$(parse_git_dirty)/"
+  git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/\1/"
 }
 
 function parse_svn() {
   svn info 2> /dev/null | grep '^URL:' | sed -ne 's/^URL: http:\/\/svnhost\/svn\///p'
 }
-PS1="\[${BOLD}${MAGENTA}\]\u\[$WHITE\]@\[$ORANGE\]\h\[$WHITE\]: \[$GREEN\]\w\[$WHITE\]\$([[ -n \$(git branch 2> /dev/null) ]] && echo \"  \")\[$PURPLE\]\$(parse_git_branch)\[$WHITE\]\$([[ -n \$(svn info 2> /dev/null) ]] && echo \" on \")\[$PURPLE\]\$(parse_svn)\[$WHITE\]\n\$ \[$RESET\]"
-#PS1="\[${BOLD}${MAGENTA}\]\u \[$WHITE\]at \[$ORANGE\]\h \[$WHITE\]in \[$GREEN\]\w\[$WHITE\]\$([[ -n \$(git branch 2> /dev/null) ]] && echo \" on \")\[$PURPLE\]\$(parse_git_branch)\[$WHITE\]\$([[ -n \$(svn info 2> /dev/null) ]] && echo \" on \")\[$PURPLE\]\$(parse_svn)\[$WHITE\]\n\$ \[$RESET\]"
+
+PS1="\[${BOLD}${MAGENTA}\]\u \[$WHITE\]\[$ORANGE\]\h \[$WHITE\]\[$GREEN\]\w\[$WHITE\]\$([[ -n \$(git branch 2> /dev/null) ]] && echo \" \")\[$PURPLE\]\$(parse_git_branch)\[$WHITE\]\$([[ -n \$(svn info 2> /dev/null) ]] && echo \" on \")\[$PURPLE\]\$(parse_svn)\[$WHITE\]\n\$ \[$RESET\]"
