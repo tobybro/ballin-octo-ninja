@@ -1,0 +1,31 @@
+\set QUIET on
+\set HISTFILE ~/.psql_history- :host - :DBNAME
+\set HISTSIZE 2000
+\set COMP_KEYWORD_CASE preserve-lower
+\encoding unicode
+--\pset linestyle unicode
+\pset null '[NULL]'
+\set PROMPT1 '%[%033[31;5m%]%x%[%033[0m%]%[%033[32;1m%]%n%[%033[33;1m%]@%[%033[32;1m%m%[%033[0m%] %[%033[36;1m%]%/%[%033[0m%] # '
+\set PROMPT2 '%033[33;1m >>> %033[0m%'
+\timing on
+\pset pager off
+\pset border 2
+\set host `hostname -a`
+\set qstats 'SELECT usename, datname, left(query, 100) || \'...\' AS query FROM pg_stat_activity WHERE state != \'idle\';'
+\set waits 'SELECT pid, query, waiting, now() - query_start as "totaltime", backend_start FROM pg_stat_activity WHERE state != \'idle\' AND waiting = true;'
+\set locks 'select l.pid,mode,query from pg_locks l, pg_stat_activity a where granted=false and locktype=\'transactionid\' and l.pid=a.pid order by pid,granted;'
+\set uptime 'select date_trunc(\'second\',current_timestamp - pg_postmaster_start_time()) as uptime;'
+\set sessiontime 'select now() - backend_start as uptime from pg_stat_activity where pid = pg_backend_pid();'
+\set longqueries 'SELECT pid, client_port, state, now() - query_start AS duration, query FROM pg_stat_activity WHERE now() - query_start > INTERVAL \'2 seconds\' AND state != \'idle\' ORDER BY duration DESC;'
+\x auto
+\unset QUIET
+\echo 'Ctrl-l to clear the screen.'
+\echo 'Predefined queries:'
+\echo '\t:qstats\t-- query stats'
+\echo '\t:waits\t-- waiting queries'
+\echo '\t:locks\t-- locked queries'
+\echo '\t:uptime\t-- postmaster uptime'
+\echo '\t:sessiontime\t-- session uptime'
+\echo '\t:longqueries\t-- long running queries'
+\echo ''
+
