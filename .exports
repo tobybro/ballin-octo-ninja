@@ -1,5 +1,6 @@
 # Make vim the default editor
 export EDITOR="vim"
+
 # Don’t clear the screen after quitting a manual page
 export MANPAGER="less -X"
 
@@ -7,9 +8,20 @@ export MANPAGER="less -X"
 export HISTSIZE=32768
 export HISTFILESIZE=$HISTSIZE
 export HISTCONTROL=ignoredups
+
 # Make some commands not show up in history
 #export HISTIGNORE="ls:ls *:cd:cd -:pwd;exit:date:* --help"
 
-export PATH="$PATH:~/scripts"
-export PATH="$PATH:~/bin"
+export PATH="$PATH:$HOME/scripts"
+export PATH="$PATH:$HOME/bin"
+export PATH="$PATH:$HOME/.rvm/bin"
+export PATH="$PATH:/usr/sbin:/sbin"
+export PATH="$PATH:$HOME/opt/"
+
 export PKG_CONFIG_PATH="/usr/lib64/pkgconfig/":
+
+#Atlasian SDK crap
+export JAVA_HOME="$HOME/opt/jdk1.8.0_45"
+export PATH="$PATH:JAVA_HOME/jre/bin"
+alias javac="$HOME/opt/jdk1.8.0_45/bin/javac"
+

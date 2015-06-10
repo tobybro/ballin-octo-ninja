@@ -31,8 +31,7 @@ complete -W "NSGlobalDomain" defaults
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source $HOME/.rvm/scripts/rvm
 [[ -s "$HOME/.nvm/nvm.sh" ]]      && source $HOME/.nvm/nvm.sh
 
+#perlbrew
 [[ -s "$HOME/perl5/perlbrew/etc/bashrc" ]] && source $HOME/perl5/perlbrew/etc/bashrc
-
-export PATH=$PATH:/usr/sbin:/sbin
 
 eval `dircolors ~/.dir_colors`
