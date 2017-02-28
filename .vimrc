@@ -244,7 +244,7 @@ let perl_extended_vars=1 " highlight advanced perl vars inside strings
 inoremap <S-Tab> <C-V><Tab>
 
 set background=dark
-colorscheme herald 
+colorscheme jellybeans
 "colorscheme paintbox 
 "colorscheme solarized
 
